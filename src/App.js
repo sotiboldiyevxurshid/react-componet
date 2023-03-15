@@ -1,24 +1,19 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import FooterXurshid from "./components/Xurshid/FooterXurshid/FooterXurshid";
+import HeaderXurshid from "./components/Xurshid/HeaderXurshid/HeaderXurshid";
+import NavbarRouter from "./components/Xurshid/NavbarXurshid/NavbarRouterXurshid";
+import Section1Xurshid from "./components/Xurshid/Section1Xurshid/Section1Xurshid";
+import Section2Xurshid from "./components/Xurshid/Section2Xurshid/Section2Xurshid";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <NavbarRouter />
+      <HeaderXurshid />
+      <Section1Xurshid />
+      <Section2Xurshid />
+      <FooterXurshid />
+    </>
   );
 }
 

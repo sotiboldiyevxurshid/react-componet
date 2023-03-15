@@ -1,0 +1,17 @@
+.sd{
+    font-family: 'Heebo';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 29px;
+    text-align: right;
+    
+    color: #000000;
+}
+
+
+.navbar_2{
+    display: flex;
+    gap: 30px;
+}
+
