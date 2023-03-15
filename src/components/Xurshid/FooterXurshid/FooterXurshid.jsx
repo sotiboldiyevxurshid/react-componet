@@ -10,9 +10,7 @@ export default function FooterXurshid() {
   return (
     <>
       <Container>
-        
         <Row>
-          
           <Col xs={12}>
             <div className="footer_1">
               <a href="https://t.me/Xurshid_Blog_2">

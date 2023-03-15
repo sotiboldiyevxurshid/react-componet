@@ -1,7 +1,7 @@
 import React from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import "./headerXurshid.css";
-const header_img = require("../img/Avatar.png")
+const header_img = require("../img/Avatar.png");
 
 export default function HeaderXurshid() {
   return (
@@ -9,10 +9,7 @@ export default function HeaderXurshid() {
       <header>
         <Container>
           <Row>
-
-            
             <Col xs={8}>
-              
               <h1 className="header_h1">
                 Hi, I am John, <br />
                 Creative Technologist
@@ -28,7 +25,7 @@ export default function HeaderXurshid() {
             </Col>
 
             <Col xs={4}>
-                <img className="header_img1" src={header_img} alt="" />
+              <img className="header_img1" src={header_img} alt="" />
             </Col>
           </Row>
         </Container>

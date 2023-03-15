@@ -1,45 +1,55 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { Accordion, Button, Col, Container, Form, ListGroup, Row } from "react-bootstrap";
+import {
+  Accordion,
+  Button,
+  Col,
+  Container,
+  Form,
+  ListGroup,
+  Row,
+} from "react-bootstrap";
 import "./section2Xurshid.css";
-import DeleteIcon from '@mui/icons-material/Delete';
+import DeleteIcon from "@mui/icons-material/Delete";
 const imga = require("../img/img1.png");
 
 export default function Section2Xurshid() {
   const [getdata, setGetdata] = useState();
-  const [postn, setPost] = useState()
-  const [comment, setComment] = useState()
+  const [postn, setPost] = useState();
+  const [comment, setComment] = useState();
 
   const getAllData = () => {
-    axios.get("https://newrepository-production.up.railway.app/data")
-    .then((res) => {
-      setGetdata(res?.data)
-    })
-    
+    axios
+      .get("https://newrepository-production.up.railway.app/data")
+      .then((res) => {
+        setGetdata(res?.data);
+      });
   };
 
   const postUsers = () => {
-    axios.post("https://newrepository-production.up.railway.app/data", {name :  postn,post :  comment})
-    .then((data) => {
-alert(data.statusText)
-setPost("")
-    })
-  }
-
- 
+    axios
+      .post("https://newrepository-production.up.railway.app/data", {
+        name: postn,
+        post: comment,
+      })
+      .then((data) => {
+        alert(data.statusText);
+        setPost("");
+      });
+  };
 
   const deleteFunc = (id) => {
-    axios.delete(`https://newrepository-production.up.railway.app/data/${id}`).then((res) =>{
-       alert(res.statusText)
-  })
+    axios
+      .delete(`https://newrepository-production.up.railway.app/data/${id}`)
+      .then((res) => {
+        alert(res.statusText);
+      });
     // rows.filter(id)
-  }
+  };
 
   useEffect(() => {
-    getAllData()
-  },[])
-
-
+    getAllData();
+  }, []);
 
   console.log(getAllData);
   return (
@@ -52,7 +62,7 @@ setPost("")
 
           <Col>
             <Col xs={4}>
-              <img className="img_s"  src={imga} alt="" />
+              <img className="img_s" src={imga} alt="" />
             </Col>
           </Col>
 
@@ -115,51 +125,60 @@ setPost("")
             <Form>
               <Form.Group className="mb-3" controlId="formBasicEmail">
                 <Form.Label>Email address</Form.Label>
-                <Form.Control type="text" value={postn} onChange={(e) => setPost(e.target.value)} placeholder="Enter email" />
-                
+                <Form.Control
+                  type="text"
+                  value={postn}
+                  onChange={(e) => setPost(e.target.value)}
+                  placeholder="Enter email"
+                />
               </Form.Group>
 
               <Form.Group className="mb-3" controlId="formBasicPassword">
-                <textarea value={comment}  onChange={(e) => setComment(e.target.value)}
+                <textarea
+                  value={comment}
+                  onChange={(e) => setComment(e.target.value)}
                   cols="30"
                   rows="10"
                   style={{ width: "100%", border: "2px solid gray" }}
                 ></textarea>
               </Form.Group>
-              
-              <Button style={{ width: "100%" }} className="button2" variant="primary"  onClick={postUsers}>
+
+              <Button
+                style={{ width: "100%" }}
+                className="button2"
+                variant="primary"
+                onClick={postUsers}
+              >
                 Submit
               </Button>
             </Form>
-        {getdata?.map((user) => {
-          return (
-            <>
-   
+            {getdata?.map((user) => {
+              return (
+                <>
+                  <Accordion>
+                    <Accordion.Item eventKey={user.id}>
+                      <Accordion.Header>Name{user.id}</Accordion.Header>
+                      <Accordion.Body>
+                        <ListGroup.Item>
+                          <b>Name:</b>
+                          {user.name}
+                        </ListGroup.Item>
+                        <ListGroup.Item>
+                          <b>Post:</b>
+                          {user.post}
+                        </ListGroup.Item>
 
-                <Accordion>
-      <Accordion.Item eventKey={user.id}>
-        <Accordion.Header>Name{user.id}</Accordion.Header>
-        <Accordion.Body>
-                <ListGroup.Item ><b>Name:</b>{user.name}</ListGroup.Item>
-                <ListGroup.Item ><b>Post:</b>{user.post}</ListGroup.Item>
-         
-                <DeleteIcon onClick={() => deleteFunc(user.id)} />
-        </Accordion.Body>
-      </Accordion.Item>
-      </Accordion>
+                        <DeleteIcon onClick={() => deleteFunc(user.id)} />
+                      </Accordion.Body>
+                    </Accordion.Item>
+                  </Accordion>
 
-                {/* <button >delete</button> */}
-   
-
-            </>
-          )
-        })}
-         
+                  {/* <button >delete</button> */}
+                </>
+              );
+            })}
           </Col>
         </Row>
-
-       
-
       </Container>
     </div>
   );
